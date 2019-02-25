@@ -18,6 +18,7 @@ def unidimensional_greedy_heuristic(row_count, column_count, min_ingredient,
     col_slices, col_score = row_greedy_heuristic(column_count, row_count, 
                                                  min_ingredient,
                                                  max_area, np.transpose(grid))
+    col_slices = col_slices[:, [1, 0, 3, 2]]
     print ('Score of the 1D greedy heuristic along columns: %d' % col_score)
 
     if row_score > col_score:
@@ -53,10 +54,10 @@ def row_greedy_heuristic(row_count, column_count, min_ingredient,
             if (end - beg <= max_area 
                     and mushroom_count >= min_ingredient
                     and tomato_count >= min_ingredient):
-                results.append((beg, r, end - 1, r))
+                results.append(np.array((r, beg, r, end - 1)))
                 score += end - beg
                 beg = end
                 mushroom_count = 0
                 tomato_count = 0
 
-    return results, score
+    return np.array(results), score
