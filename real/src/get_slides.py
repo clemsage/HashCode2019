@@ -36,7 +36,7 @@ def get_slides(list_of_photos):
         vertical_photo = vertical_photos.pop()
         return_photo = vertical_photos[0]
         score = len(get_common_tags(vertical_photo, return_photo))
-        for i_test, test_photo in enumerate(vertical_photos):
+        for i_test, test_photo in enumerate(vertical_photos[:15]):
             new_score = len(get_common_tags(vertical_photo, return_photo))
             if new_score > score:
                 score = new_score
