@@ -13,10 +13,10 @@ def greedy_heuristic(slides, seed=None):
     results = []
     max_slides_search = 10
 
-    idx_curr_slide = np.random.choice(len(slides), 1)
+    idx_curr_slide = np.random.choice(len(slides))
     while True:
         curr_slide = copy(slides[idx_curr_slide])
-        results.append(curr_slide)
+        results.append(curr_slide.photo_ids)
         del slides[idx_curr_slide]
         
         if not len(slides):
