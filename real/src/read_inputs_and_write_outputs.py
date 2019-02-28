@@ -46,6 +46,7 @@ for landscape_path in landscape_paths:
     f.close()
 
     slides = get_slides.get_slides(photos)
+    import pdb; pdb.set_trace()
     results = models.keep_original_order(slides)
     #results = models.greedy_heuristic(slides)
 

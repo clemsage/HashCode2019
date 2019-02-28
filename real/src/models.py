@@ -7,23 +7,27 @@ Created on Mon Feb 25 21:59:50 2019
 import numpy as np
 
 def greedy_heuristic(slides, seed=None):
-    import pdb; pdb.set_trace()
     np.random.seed(seed)
     np.random.shuffle(slides)
     results = []
     max_slides_search = 100
-    for ind_s, slide in enumerate(slides):
-        subset_slides = np.random.choice(slides[ind_s:], max_slides_search, 
+    
+    nb_slides = len(slides)
+    for _ in range(nb_slides):
+        idx_curr_slide = np.random.choice(len(slides))
+        subset_slides = np.random.choice(slides, min(len(slides), max_slides_search), 
                                          replace=False)
-        max_score = 0
+        import pdb; pdb.set_trace()
+        
         
         
     return results
 
-def max_scores_two_slides(slide1, slide2):
-    return min([len(set(slide1+slide2)),
-                len([tag for tag in slide1 if tag not in slide2]),
-                len([tag for tag in slide2 if tag not in slide1])])
+def score_two_slides(slide1, slide2):
+    intersect = set.intersection(slide1.tags, slide2.tags)
+    return min([len(intersect),
+                len(slide1.tags - intersect),
+                len(slide2.tags - intersect)])
 
 def keep_original_order(slides):
     return [slide.photo_ids for slide in slides]

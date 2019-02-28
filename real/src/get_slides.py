@@ -8,7 +8,7 @@ import numpy as np
 class Slide():
     def __init__(self, photo_ids, tags):
         self.photo_ids = photo_ids
-        self.tags = tags
+        self.tags = set(tags)
 
 def get_slides(list_of_photos):
     results = []
