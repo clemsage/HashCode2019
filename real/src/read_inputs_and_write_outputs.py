@@ -45,13 +45,9 @@ for landscape_path in landscape_paths:
         photos.append(photo)
     f.close()
 
-<<<<<<< HEAD
-    slides = get_slides(photos)
-    results = models.keep_original_order(slides)
-=======
     slides = get_slides.get_slides(photos)
->>>>>>> refs/remotes/origin/master
-    results = models.greedy_heuristic(slides)
+    results = models.keep_original_order(slides)
+    #results = models.greedy_heuristic(slides)
 
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
