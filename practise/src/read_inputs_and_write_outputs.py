@@ -9,7 +9,7 @@ import models
 import numpy as np
 
 
-out_folder = '../out/'
+out_folder = '../out/unidim/'
 try:
     os.makedirs(out_folder)
 except OSError:
@@ -22,22 +22,20 @@ pizza_paths = ['../a_example.in', '../b_small.in', '../c_medium.in',
 for pizza_path in pizza_paths:
     print ('Pizza file: %s' % pizza_path)
     f = open(pizza_path, mode='r')
-    
+
     header = f.readline()
     row_count, column_count, min_ingredient, max_area = tuple(map(
             int, header.split(' ')))
-    
+
     grid = []
     for i in range(row_count):
         grid.append(list(f.readline().rstrip()))
     grid = np.array(grid)
     f.close()
-    
+
     results = models.unidimensional_greedy_heuristic(row_count, column_count, min_ingredient, 
                                                      max_area, grid)
-    
-    
-                
+
     f = open(out_folder + pizza_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
     f.writelines(map(lambda x: ' '.join(map(str, x)) + '\n', results))

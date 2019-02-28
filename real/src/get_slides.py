@@ -15,7 +15,7 @@ def get_slides(list_of_photos):
     vertical_photos = []
 
     for i, photo in enumerate(list_of_photos):
-        if (photo.orientation === "V"):
+        if (photo.orientation == "V"):
             vertical_photos.append(photo)
         else:
             slide = Slide(photo.photo_id, photo.tags)
