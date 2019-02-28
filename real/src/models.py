@@ -26,4 +26,4 @@ def max_scores_two_slides(slide1, slide2):
                 len([tag for tag in slide2 if tag not in slide1])])
 
 def keep_original_order(slides):
-    return [slide.photos for slide in slides]
+    return [slide.photo_ids for slide in slides]
