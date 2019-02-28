@@ -26,9 +26,10 @@ landscape_paths = [
 ]
 
 class Photo():
-    def __init__(self, orientation, tags):
+    def __init__(self, orientation, tags, photo_id):
         self.orientation = orientation
         self.tags = tags
+        self.photo_id = photo_id
 
 for landscape_path in landscape_paths:
     print ('Landscape file: %s' % landscape_path)
@@ -40,12 +41,16 @@ for landscape_path in landscape_paths:
     photos = []
     for i in range(row_count):
         elts = list(map(str.rstrip, f.readline().split(' ')))
-        photo = Photo(elts[0], elts[2:])
+        photo = Photo(elts[0], elts[2:], i)
         photos.append(photo)
     f.close()
 
+<<<<<<< HEAD
     slides = get_slides(photos)
     results = models.keep_original_order(slides)
+=======
+    slides = get_slides.get_slides(photos)
+>>>>>>> refs/remotes/origin/master
     results = models.greedy_heuristic(slides)
 
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
