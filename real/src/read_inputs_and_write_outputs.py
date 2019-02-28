@@ -24,6 +24,11 @@ landscape_paths = [
     '../in/e_shiny_selfies.txt',
 ]
 
+class Photo():
+    def __init__(self, orientation, tags):
+        self.orientation = orientation
+        self.tags = tags
+
 for landscape_path in landscape_paths:
     print ('Landscape file: %s' % landscape_path)
     f = open(landscape_path, mode='r')
@@ -31,14 +36,15 @@ for landscape_path in landscape_paths:
     header = f.readline()
     row_count = int(header)
     
-    grid = []
+    photos = []
     for i in range(row_count):
-        grid.append(list(f.readline().rstrip()))
-    grid = np.array(grid)
+        elts = list(map(str.rstrip, f.readline().split(' ')))
+        photo = Photo(elts[0], elts[2:])
+        photos.append(photo)
     f.close()
-    
-    results = models.unidimensional_greedy_heuristic(row_count, grid)
-    
+
+    results = models.greedy_heuristic(photos)
+
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
     f.writelines(map(lambda x: ' '.join(map(str, x)) + '\n', results))
