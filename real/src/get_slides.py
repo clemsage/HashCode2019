@@ -21,8 +21,8 @@ def get_slides(list_of_photos):
             slide = Slide(photo.photo_id, photo.tags)
             results.append(slide)
 
-    
-    for i, photo in enumerate(len(vertical_photos) // 2):
+
+    for i in range(len(vertical_photos) // 2):
         photo1 = vertical_photos[i]
         photo2 = vertical_photos[i + 1]
         common_tags = photo1.tags
@@ -30,8 +30,22 @@ def get_slides(list_of_photos):
             if tag not in common_tags:
                 common_tags.append(tag)
         
-        photo_ids = ' '.join(map(str, [photo1.photo_id, photo1.photo_id]))
+        photo_ids = ' '.join(map(str, [photo1.photo_id, photo2.photo_id]))
         slide = Slide(photo_ids, common_tags)
         results.append(slide)
 
     return results
+
+
+if __name__ == "__main__":
+    class Photo():
+        def __init__(self, orientation, tags, photo_id):
+            self.orientation = orientation
+            self.tags = tags
+            self.photo_id = photo_id
+
+    list_of_photos = [
+        Photo('H', ['A', 'B', 'C'], 1),
+        Photo('V', ['A', 'B', 'C'], 2),
+        Photo('V', ['D', 'C'], 3),
+    ]
