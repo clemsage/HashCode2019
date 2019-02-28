@@ -6,7 +6,7 @@ Created on Mon Feb 25 21:59:50 2019
 """
 import numpy as np
 
-def arange(slides):
+def greedy_heuristic(slides):
     results = []
     
     return results
