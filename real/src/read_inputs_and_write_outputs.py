@@ -43,7 +43,7 @@ for landscape_path in landscape_paths:
         photos.append(photo)
     f.close()
 
-    results = models.greedy_heuristic(photos)
+    results = models.arrange(slides)
 
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
