@@ -46,9 +46,9 @@ for landscape_path in landscape_paths:
     f.close()
 
     slides = get_slides.get_slides(photos)
+    #results = models.keep_original_order(slides)
+    results = models.greedy_heuristic(slides)
     import pdb; pdb.set_trace()
-    results = models.keep_original_order(slides)
-    #results = models.greedy_heuristic(slides)
 
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
