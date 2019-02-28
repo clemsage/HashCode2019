@@ -17,11 +17,11 @@ except OSError:
         raise
 
 landscape_paths = [
-    '../a_example.txt',
-    '../b_lovely_landscapes.txt',
-    '../c_memorable_moments.txt',
-    '../d_pet_pictures.txt',
-    '../e_shiny_selfies.txt',
+    '../in/a_example.txt',
+    '../in/b_lovely_landscapes.txt',
+    '../in/c_memorable_moments.txt',
+    '../in/d_pet_pictures.txt',
+    '../in/e_shiny_selfies.txt',
 ]
 
 for landscape_path in landscape_paths:
