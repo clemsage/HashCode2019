@@ -18,13 +18,13 @@ def get_slides(list_of_photos):
         if (photo.orientation == "V"):
             vertical_photos.append(photo)
         else:
-            slide = Slide(photo.photo_id, photo.tags)
+            slide = Slide(str(photo.photo_id), photo.tags)
             results.append(slide)
 
 
     for i in range(len(vertical_photos) // 2):
-        photo1 = vertical_photos[i]
-        photo2 = vertical_photos[i + 1]
+        photo1 = vertical_photos[2 * i]
+        photo2 = vertical_photos[2 * i + 1]
         common_tags = photo1.tags
         for tag in photo2.tags:
             if tag not in common_tags:
