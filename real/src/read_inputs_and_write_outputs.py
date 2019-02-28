@@ -6,6 +6,7 @@ Created on Mon Feb 25 21:59:50 2019
 """
 import os
 import models
+import get_slides
 import numpy as np
 
 
@@ -43,7 +44,8 @@ for landscape_path in landscape_paths:
         photos.append(photo)
     f.close()
 
-    results = models.greedy_heuristic(photos)
+    slides = get_slides(photos)
+    results = models.greedy_heuristic(slides)
 
     f = open(out_folder + landscape_path.split('/')[-1], mode='w')
     f.write(str(len(results)) + '\n')
